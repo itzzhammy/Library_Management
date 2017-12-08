@@ -1,8 +1,8 @@
 <?php
-function showdetails_borrower($borcard_no)
+function showdetails_books($bookTitle)
 {
-	include('../dbcon.php');
-	$sql="SELECT * FROM `borrower` WHERE `borrower_card_no`='$borcard_no'";
+	include('dbcon.php');
+	$sql="SELECT * FROM `book` WHERE `book_title`='$bookTitle'";
 	$run=mysqli_query($con,$sql);
 	
 	if(mysqli_num_rows($run)>0)
@@ -10,35 +10,28 @@ function showdetails_borrower($borcard_no)
 		
 		$data=mysqli_fetch_assoc($run);
 		?>
-		<table align="center" border="1" width="80%;" >
+		<table border="1" align="center" style="width:50%; margin-top:40px;" >
 		<tr>
-		<th colspan="3">Borrower Details</th>
-		</tr>
-		
-		<!-- <tr>
-		<td rowspan="5"> <img src="dataimg/<?php //echo $data['image']; ?>" style="max-height:150px; max-width:120px;" /> </td> -->
-		<th>Borrower Card NO.</th>
-		<td><?php echo $data['borrower_card_no'];?></td>
+		<th colspan="3">Book Details</th>
 		</tr>
 		
 		<tr>
-		  <th>Borrower Name</th>
-		  <td><?php echo $data['borrower_name'];?></td>
+		<!-- <td rowspan="5"> <img src="dataimg/<?php// echo $data['image']; ?>" style="max-height:150px; max-width:120px;" /> </td> -->
+		<th>Book Id</th>
+		<td><?php echo $data['book_id'];?></td>
+		</tr>
+		
+		<tr>
+		  <th>Book Name</th>
+		  <td><?php echo $data['book_title'];?></td>
 		</tr>
          
         <tr>
-		  <th>Borrower Addtress</th>
-		  <td><?php echo $data['borrower_address'];?></td>
-		</tr>
-		
-		<tr>
-		  <th>Borrower phone</th>
-		  <td><?php echo $data['borrower_phone'];?></td>
+		  <th>Publisher Name</th>
+		  <td><?php echo $data['publisher_name'];?></td>
 		</tr>
 		
 	
-		
-		
 		
 		</table>
 		
@@ -51,7 +44,7 @@ function showdetails_borrower($borcard_no)
 	}
 else
 {
-	echo "<script>alert('No Such Id exist');</script>";
+	echo "<script>alert('No Such book exist');</script>";
 	
 	
 }
@@ -59,11 +52,6 @@ else
 	
 	
 }
-
-
-
-
-
 
 
 
